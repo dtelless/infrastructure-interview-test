@@ -37,7 +37,8 @@
     "typeorm": "^0.2.0"
   },
   "scripts": {
-    "start": "tsc && node src/index.js",
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   }
 }
