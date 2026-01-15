@@ -4,6 +4,9 @@ metadata:
   name: {{ include "typeorm-app.fullname" . }}-config
   labels:
     {{- include "typeorm-app.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-weight": "-10"
 data:
   TYPEORM_CONNECTION: {{ .Values.env.typeormConnection | quote }}
   TYPEORM_HOST: {{ .Values.env.typeormHost | quote }}
