@@ -1,0 +1,4 @@
+auth:
+  existingSecret: "mariadb-creds"
+  database: "test"
+  username: "test"

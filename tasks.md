@@ -1,14 +1,14 @@
 # Project Tasks
 
-Based on the [README.md](./README.md) requirements.
+Based on the project requirements.
 
-## 🚀 Core Requirements (Mandatory)
+## Core Requirements (Mandatory)
 - [ ] **Containerization**: Create a container image for the application and publish it to a public repository (DockerHub, Quay, etc).
 - [ ] **Kubernetes Deployment**: Write necessary code (manifests) to deploy the image in a Kubernetes cluster.
 - [ ] **External Exposure**: Expose the application externally to the Kubernetes cluster (Service/Ingress).
 - [ ] **High Availability**: Configure the application for HA, considering worker nodes in 3 different availability zones (e.g., PodAntiAffinity, Replicas).
 
-## ✨ Optional Goals
+## Optional Goals
 - [ ] **Private Registry Auth**: Configure Kubernetes to authenticate to a private container registry.
 - [ ] **Automation Script**: Create a script for automating image building and deployment.
 - [ ] **Reverse Proxy**: Add a reverse proxy (e.g., Nginx) to route requests instead of exposing the main service directly.
@@ -20,7 +20,7 @@ Based on the [README.md](./README.md) requirements.
     - [ ] Configure the local environment.
     - [ ] Configure a remote environment (Cloud Provider).
 
-## 🏆 Evaluation Criteria (Best Practices)
+## Evaluation Criteria (Best Practices)
 Ensure the following are addressed in all implementations:
 - [ ] **Code Organization**: Clean structure and separation of concerns.
 - [ ] **Documentation**: Clear instructions and comments.
@@ -32,9 +32,3 @@ Ensure the following are addressed in all implementations:
 - [ ] **Availability**: Uptime considerations.
 - [ ] **Cost**: Resource efficiency.
 - [ ] **Industry Best Practices**: General standard conformance.
-
-## 🛠 Setup & Run (Local Development)
-- [ ] Run `yarn install`
-- [ ] Setup Database: `docker run -p 3306:3306 -e MYSQL_ROOT_PASSWORD=test -e MYSQL_DATABASE=test -e MYSQL_USER=test -e MYSQL_PASSWORD=test -d mariadb:5.5`
-- [ ] Run Migrations: `yarn typeorm migration:run`
-- [ ] Verify Endpoint: `http://localhost:3000/posts`

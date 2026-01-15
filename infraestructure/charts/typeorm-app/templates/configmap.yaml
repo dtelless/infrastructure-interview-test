@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "typeorm-app.fullname" . }}-config
+  labels:
+    {{- include "typeorm-app.labels" . | nindent 4 }}
+data:
+  TYPEORM_CONNECTION: {{ .Values.env.typeormConnection | quote }}
+  TYPEORM_HOST: {{ .Values.env.typeormHost | quote }}
+  TYPEORM_PORT: {{ .Values.env.typeormPort | quote }}
+  TYPEORM_USERNAME: {{ .Values.env.typeormUsername | quote }}
+  TYPEORM_DATABASE: {{ .Values.env.typeormDatabase | quote }}
+  TYPEORM_SYNCHRONIZE: {{ .Values.env.typeormSynchronize | quote }}
+  TYPEORM_ENTITIES: {{ .Values.env.typeormEntities | quote }}
+  TYPEORM_SUBSCRIBERS: {{ .Values.env.typeormSubscribers | quote }}
+  TYPEORM_MIGRATIONS: {{ .Values.env.typeormMigrations | quote }}
+  TYPEORM_ENTITIES_DIR: {{ .Values.env.typeormEntitiesDir | quote }}
+  TYPEORM_MIGRATIONS_DIR: {{ .Values.env.typeormMigrationsDir | quote }}
+  TYPEORM_SUBSCRIBERS_DIR: {{ .Values.env.typeormSubscribersDir | quote }}

@@ -1,0 +1,32 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/YOUR_USERNAME/typeorm-app # You can use the GitHub Registry address here
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+
+service:
+  type: ClusterIP
+  port: 3000
+
+env:
+  # Connection settings
+  typeormConnection: "mysql"
+  typeormHost: "mariadb" # Default to service name, overridden by TF if needed
+  typeormPort: "3306"
+  typeormUsername: "test"
+  typeormDatabase: "test"
+  typeormSynchronize: "true"
+  
+  # Entity settings
+  typeormEntities: "src/entity/*.js"
+  typeormSubscribers: "src/subscriber/*.js"
+  typeormMigrations: "src/migration/*.js"
+  typeormEntitiesDir: "src/entity"
+  typeormMigrationsDir: "src/migration"
+  typeormSubscribersDir: "src/subscriber"
+
+# Secret values should be passed via --set or values file overrides, but we set a default here for structure
+secrets:
+  typeormPassword: "test"
