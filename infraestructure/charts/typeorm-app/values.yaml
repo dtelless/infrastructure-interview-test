@@ -20,12 +20,12 @@ env:
   typeormSynchronize: "true"
   
   # Entity settings
-  typeormEntities: "src/entity/*.js"
-  typeormSubscribers: "src/subscriber/*.js"
-  typeormMigrations: "src/migration/*.js"
-  typeormEntitiesDir: "src/entity"
-  typeormMigrationsDir: "src/migration"
-  typeormSubscribersDir: "src/subscriber"
+  typeormEntities: "dist/entity/*.js"
+  typeormSubscribers: "dist/subscriber/*.js"
+  typeormMigrations: "dist/migration/*.js"
+  typeormEntitiesDir: "dist/entity"
+  typeormMigrationsDir: "dist/migration"
+  typeormSubscribersDir: "dist/subscriber"
 
 # Secret values should be passed via --set or values file overrides, but we set a default here for structure
 secrets:
