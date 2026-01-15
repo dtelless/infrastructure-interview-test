@@ -33,4 +33,4 @@ jobs:
           cd infraestructure/charts/typeorm-app
           # Assuming the version in Chart.yaml is the single source of truth
           CHART_VERSION=$(grep 'version:' Chart.yaml | awk '{print $2}')
-          helm push typeorm-app-${CHART_VERSION}.tgz oci://registry-1.docker.io/${{ vars.DOCKER_USERNAME }}/charts
+          helm push typeorm-app-${CHART_VERSION}.tgz oci://registry-1.docker.io/${{ vars.DOCKER_USERNAME }}/
