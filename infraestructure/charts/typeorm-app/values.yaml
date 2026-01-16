@@ -30,3 +30,7 @@ env:
 # Secret values should be passed via --set or values file overrides, but we set a default here for structure
 secrets:
   typeormPassword: "test"
+
+affinity: {}
+
+topologySpreadConstraints: []
