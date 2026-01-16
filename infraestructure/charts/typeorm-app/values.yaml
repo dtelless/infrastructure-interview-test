@@ -4,7 +4,7 @@ image:
   repository: dtelless/infrastructure-interview-test # You can use the GitHub Registry address here
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
+  tag: ""
 
 nginx:
   image:

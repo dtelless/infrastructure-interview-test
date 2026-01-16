@@ -3,6 +3,7 @@ name: Docker
 on:
   push:
     branches: [ "main" ]
+    tags: [ 'v*.*.*' ]
 
 jobs:
   build:
@@ -28,3 +29,4 @@ jobs:
           tags: |
             ${{ vars.DOCKER_USERNAME }}/infrastructure-interview-test:latest
             ${{ vars.DOCKER_USERNAME }}/infrastructure-interview-test:${{ github.sha }}
+            ${{ vars.DOCKER_USERNAME }}/infrastructure-interview-test:${{ github.ref_name }}
