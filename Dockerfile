@@ -18,16 +18,23 @@ RUN yarn build
 # Production Stage
 FROM node:18-alpine
 
+
 WORKDIR /app
 
+# Set ownership to node user
+RUN chown -R node:node /app
+
+# Switch to non-root user
+USER node
+
 # Copy package files
-COPY package.json yarn.lock ./
+COPY --chown=node:node package.json yarn.lock ./
 
 # Install only production dependencies
 RUN yarn install --production --frozen-lockfile
 
 # Copy built assets from builder stage
-COPY --from=builder /app/dist ./dist
+COPY --chown=node:node --from=builder /app/dist ./dist
 
 # Expose the application port
 EXPOSE 3000

@@ -49,3 +49,14 @@ Selector labels
 app.kubernetes.io/name: {{ include "typeorm-app.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
+
+{{/*
+Create the name of the service account to use
+*/}}
+{{- define "typeorm-app.serviceAccountName" -}}
+{{- if .Values.serviceAccount.create }}
+{{- default (include "typeorm-app.fullname" .) .Values.serviceAccount.name }}
+{{- else }}
+{{- default "default" .Values.serviceAccount.name }}
+{{- end }}
+{{- end }}
