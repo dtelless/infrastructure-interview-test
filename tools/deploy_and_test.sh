@@ -26,9 +26,15 @@ done
 
 # Check cloud-provider-kind process
 if ! pgrep -f "cloud-provider-kind" > /dev/null; then
-    warn "cloud-provider-kind process not found! LoadBalancer IPs might not be assigned."
-    warn "Please run 'cloud-provider-kind' in a separate terminal."
-    # We continue, but warn robustly.
+    log "cloud-provider-kind process not found. Starting it..."
+    if command -v cloud-provider-kind &> /dev/null; then
+        cloud-provider-kind &
+        sleep 2
+        log "cloud-provider-kind started in background."
+    else
+        warn "cloud-provider-kind binary not found! LoadBalancer IPs might not be assigned."
+        warn "Please install cloud-provider-kind or run it manually."
+    fi
 else
     log "cloud-provider-kind is running."
 fi
