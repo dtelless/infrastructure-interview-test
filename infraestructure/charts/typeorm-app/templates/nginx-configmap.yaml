@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "typeorm-app.fullname" . }}-nginx-config
+  labels:
+    {{- include "typeorm-app.labels" . | nindent 4 }}
+data:
+  nginx.conf: |
+    events {
+      worker_connections 1024;
+    }
+    http {
+      # Hardening: Hide Nginx version
+      server_tokens off;
+
+      # Hardening: Timeouts & Limits
+      client_body_timeout 10s;
+      client_header_timeout 10s;
+      client_max_body_size 16M;
+      keepalive_timeout 65;
+
+      server {
+        listen 80;
+
+        # Hardening: Security Headers
+        add_header X-Frame-Options "SAMEORIGIN";
+        add_header X-Content-Type-Options "nosniff";
+        add_header X-XSS-Protection "1; mode=block";
+        add_header Referrer-Policy "strict-origin-when-cross-origin";
+
+        location / {
+          proxy_pass http://localhost:{{ .Values.service.targetPort | default 3000 }};
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+      }
+    }

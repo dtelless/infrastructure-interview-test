@@ -6,6 +6,19 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
+nginx:
+  image:
+    repository: nginx
+    tag: stable-alpine
+    pullPolicy: IfNotPresent
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 10m
+      memory: 64Mi
+
 service:
   type: ClusterIP
   port: 3000
