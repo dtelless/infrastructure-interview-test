@@ -2,7 +2,7 @@ resource "helm_release" "typeorm_app" {
   name       = "typeorm-app"
   repository = "oci://registry-1.docker.io/dtelless"
   chart      = "typeorm-app"
-  version    = "0.3.0"
+  version    = "1.0.2"
 
 
   values = [
