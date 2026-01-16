@@ -5,9 +5,9 @@ resource "helm_release" "typeorm_app" {
   version    = "0.1.0"
 
 
-  # values = [
-  #   file("${path.module}/../charts/typeorm-app/values.yaml")
-  # ]
+  values = [
+    file("${path.module}/values/typeorm-app/values.yaml")
+  ]
 
   depends_on = [kind_cluster.default, helm_release.mariadb]
 }
